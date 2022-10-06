@@ -45,6 +45,15 @@ Route::get('/register', [UserController::class, 'create']);
 // Create New User
 Route::post('/users', [UserController::class, 'store']);
 
+// Log User Out
+Route::post('/logout', [UserController::class, 'logout']);
+
+// Show Login form
+Route::get('/login', [UserController::class, 'login']);
+
+// Log in User
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
 // Route::get('/response', function() {
 //     // we can get response type with custom headers type and content
 //     return response('<h1>Hello from response page</h1>', 200)
