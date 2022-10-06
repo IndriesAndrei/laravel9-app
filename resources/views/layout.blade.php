@@ -12,6 +12,11 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        
+        {{-- AlpineJs --}}
+        <script src="//unpkg.com/alpinejs" defer></script>
+
+        {{-- TailwindCSS --}}
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
@@ -60,5 +65,8 @@
             >Post Job</a
         >
         </footer>
+
+        {{-- get the components/flash-message.blade.php file content --}}
+        <x-flash-message />
     </body>
 </html>
