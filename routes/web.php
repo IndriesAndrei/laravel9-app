@@ -1,35 +1,32 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
+    Common Resource Routes:
+        index - Show all listings
+        show - Show single listing
+        create - Show form to create a listing
+        store - Store new listing
+        edit - Show form to edit listing
+        update - Update listing
+        destroy - Delete listing
 */
 
-// All listings
-Route::get('/', function () {
-    // we can pass data to the view
-    return view('listings', [
-        'heading' => 'Latest Listings',
-        'listings' => Listing::all() // using Listing model and get static function all()
-    ]);
-});
+// All listings get ListingController index method
+Route::get('/', [ListingController::class, 'index']);
 
-// Single Listing using Route model binding
-Route::get('/listings/{listing}', function(Listing $listing) {
-    return view('listing', [
-        'listing' => $listing
-    ]);
-});
+// Show create form 
+Route::get('/listings/create', [ListingController::class, 'create']);
+
+// Store Listing Data
+Route::post('/listings', [ListingController::class, 'store']);
+
+// Single Listing get ListingController show method
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 // Route::get('/response', function() {
 //     // we can get response type with custom headers type and content
